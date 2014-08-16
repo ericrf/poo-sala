@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title><ui:insert name="titulo">FAE</ui:insert></title>
+	<link type="text/css" rel="stylesheet" href="styles/default.css" />
+	<style>
+#frm {
+	width: 375px;
+}
+
+#table {
+	max-width: 900px;
+}
+
+#frm, #table {
+	float: left;
+}
+
+label.form-label {
+	display: block;
+	text-align: right;
+	width: 80px;
+}
+
+label.form-label:after {
+	content: ":";
+}
+</style>
+</h:head>
+
+
+<h:body>
+
+	<h1>Usuarios!</h1>
+
+	<h:form id="frm">
+		<p:messages />
+		<h:panelGrid columns="2" cellpadding="5">
+			<h:outputLabel class="form-label" for="nome" value="Nome" />
+			<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+
+			<h:outputLabel class="form-label" for="email" value="E-mail" />
+			<p:inputText id="email" type="email"
+				value="#{usuarioMB.usuario.email}" />
+
+			<h:outputLabel class="form-label" for="idade" value="Idade" />
+			<p:inputText id="idade" value="#{usuarioMB.usuario.idade}" />
+
+			<h:outputLabel class="form-label" for="cpf" value="CPF" />
+			<p:inputText id="cpf" value="#{usuarioMB.usuario.cpf}" />
+
+			<h:outputLabel class="form-label" for="ativo" value="Ativo" />
+			<p:selectBooleanCheckbox id="ativo"
+				value="#{usuarioMB.usuario.ativo}" />
+
+			<h:outputLabel class="form-label" for="sexo" value="Sexo" />
+			<p:selectOneMenu id="sexo" value="#{usuarioMB.usuario.sexo}">
+				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+				<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+			</p:selectOneMenu>
+
+			<h:outputLabel class="form-label" for="situacaoCivil"
+				value="Situacao Civil" />
+			<p:selectOneRadio id="situacaoCivil"
+				value="#{usuarioMB.usuario.situacaoCivil}">
+				<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
+				<f:selectItem itemLabel="Casado" itemValue="Casado" />
+				<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+			</p:selectOneRadio>
+		</h:panelGrid>
+
+		<p:commandButton value="Salvar" action="#{usuarioMB.salvar}"
+			update=":frm, :table" />
+	</h:form>
+
+	<p:dataTable id="table" var="usuario" value="#{usuarioMB.findAll()}">
+		<p:column headerText="Id">
+			<h:outputText value="#{usuario.id}" />
+		</p:column>
+
+		<p:column headerText="Nome">
+			<h:outputText value="#{usuario.nome}" />
+		</p:column>
+
+		<p:column headerText="E-mail">
+			<h:outputText value="#{usuario.email}" />
+		</p:column>
+
+		<p:column headerText="Idade">
+			<h:outputText value="#{usuario.idade}" />
+		</p:column>
+
+		<p:column headerText="CPF">
+			<h:outputText value="#{usuario.cpf}" />
+		</p:column>
+
+		<p:column headerText="Ativo">
+			<h:outputText value="#{usuario.ativo}" />
+		</p:column>
+
+		<p:column headerText="Sexo">
+			<h:outputText value="#{usuario.sexo}" />
+		</p:column>
+
+		<p:column headerText="Situacao Civil">
+			<h:outputText value="#{usuario.situacaoCivil}" />
+		</p:column>
+
+	</p:dataTable>
+</h:body>
+</html>
