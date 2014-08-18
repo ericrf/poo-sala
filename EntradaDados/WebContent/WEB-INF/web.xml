@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-    <display-name>JavaFlex</display-name>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>JavaFlex</display-name>
 
-	<!-- Filtro Hibernate --> 
-    <filter>
-        <filter-name>HibernateFilter</filter-name>
-        <filter-class>edu.fae.util.OpenSessionInViewFilter</filter-class>
-    </filter>
-    
-    
-    <!-- Filtro que desabilita o cache -->
-    <filter>
-        <filter-name>NoCacheFilter</filter-name>
-        <filter-class>edu.fae.util.NoCacheFilter</filter-class>
-    </filter>    
+	<!-- Filtro Hibernate -->
+	<filter>
+		<filter-name>HibernateFilter</filter-name>
+		<filter-class>edu.fae.util.OpenSessionInViewFilter</filter-class>
+	</filter>
 
 
-	<!-- Aplica o HibernateFilter em todas as requisições --> 
-    <filter-mapping>
-        <filter-name>HibernateFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    
+	<!-- Filtro que desabilita o cache -->
+	<filter>
+		<filter-name>NoCacheFilter</filter-name>
+		<filter-class>edu.fae.util.NoCacheFilter</filter-class>
+	</filter>
+
+
+	<!-- Aplica o HibernateFilter em todas as requisições -->
+	<filter-mapping>
+		<filter-name>HibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
 
 	<!-- Aplica o Filtro NoCache em todas as requisições *.xhtml -->
-    <filter-mapping>
-        <filter-name>NoCacheFilter</filter-name>
-        <url-pattern>*.xhtml</url-pattern>
-    </filter-mapping>
-    
-    
+	<filter-mapping>
+		<filter-name>NoCacheFilter</filter-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</filter-mapping>
+
+	<context-param>
+		<param-name>primefaces.CLIENT_SIDE_VALIDATION</param-name>
+		<param-value>1</param-value>
+	</context-param>
 
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -42,9 +47,9 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-    	<welcome-file>index.jsf</welcome-file>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+		<welcome-file>index.jsf</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>

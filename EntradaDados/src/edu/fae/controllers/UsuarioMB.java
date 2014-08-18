@@ -3,21 +3,23 @@ package edu.fae.controllers;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import edu.fae.dao.DaoFactory;
 import edu.fae.model.Usuario;
 
 
-@RequestScoped
+@ViewScoped
 @ManagedBean(name="usuarioMB")
 public class UsuarioMB {
 	
 	private Usuario usuario = new Usuario();
-	
-	public void salvar(){
+
+	public String salvar(){
 		DaoFactory.getUsuarioDao().save(usuario);
 		usuario = new Usuario();
+		
+		return "";
 	}
 	
 	public List<Usuario> findAll(){
@@ -31,4 +33,5 @@ public class UsuarioMB {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 }

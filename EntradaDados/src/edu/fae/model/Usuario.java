@@ -1,28 +1,34 @@
 package edu.fae.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- * 
- * @author Robson J. P.
- *
- */
+import org.hibernate.validator.NotEmpty;
+
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
+	private static final long serialVersionUID = 2507138582953713893L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotEmpty
 	private String nome;
+
 	private String email;
+
 	private String sexo;
 	private int idade;
+
 	private String cpf;
 	private String situacaoCivil;
 	private boolean ativo;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}

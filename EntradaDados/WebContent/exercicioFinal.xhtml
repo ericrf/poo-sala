@@ -11,15 +11,12 @@
 	<title><ui:insert name="titulo">FAE</ui:insert></title>
 	<link type="text/css" rel="stylesheet" href="styles/default.css" />
 	<style>
-#frm {
-	width: 375px;
-}
 
 #table {
-	max-width: 900px;
+	width: 100%;
 }
 
-#frm, #table {
+#frm,#table {
 	float: left;
 }
 
@@ -32,54 +29,66 @@ label.form-label {
 label.form-label:after {
 	content: ":";
 }
+
+label.form-label.required:before {
+	content: "*";
+	color: #b94a48;
+}
 </style>
 </h:head>
 
 
 <h:body>
-
-	<h1>Usuarios!</h1>
-
 	<h:form id="frm">
-		<p:messages />
-		<h:panelGrid columns="2" cellpadding="5">
-			<h:outputLabel class="form-label" for="nome" value="Nome" />
-			<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+		<p:panel>
+			<p:messages />
+			<h:panelGrid columns="3" cellpadding="5">
+				<h:outputLabel class="form-label required" for="nome" value="Nome" />
+				<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
 
-			<h:outputLabel class="form-label" for="email" value="E-mail" />
-			<p:inputText id="email" type="email"
-				value="#{usuarioMB.usuario.email}" />
+				<p:message for="nome"></p:message>
 
-			<h:outputLabel class="form-label" for="idade" value="Idade" />
-			<p:inputText id="idade" value="#{usuarioMB.usuario.idade}" />
+				<h:outputLabel class="form-label" for="email" value="E-mail" />
+				<p:inputText id="email" type="email"
+					value="#{usuarioMB.usuario.email}" />
+				<p:message for="email"></p:message>
 
-			<h:outputLabel class="form-label" for="cpf" value="CPF" />
-			<p:inputText id="cpf" value="#{usuarioMB.usuario.cpf}" />
+				<h:outputLabel class="form-label" for="idade" value="Idade" />
+				<p:inputText id="idade" value="#{usuarioMB.usuario.idade}" />
+				<p:message for="idade"></p:message>
 
-			<h:outputLabel class="form-label" for="ativo" value="Ativo" />
-			<p:selectBooleanCheckbox id="ativo"
-				value="#{usuarioMB.usuario.ativo}" />
+				<h:outputLabel class="form-label" for="cpf" value="CPF" />
+				<p:inputText id="cpf" value="#{usuarioMB.usuario.cpf}" />
+				<p:message for="cpf"></p:message>
 
-			<h:outputLabel class="form-label" for="sexo" value="Sexo" />
-			<p:selectOneMenu id="sexo" value="#{usuarioMB.usuario.sexo}">
-				<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-				<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-			</p:selectOneMenu>
+				<h:outputLabel class="form-label" for="ativo" value="Ativo" />
+				<p:selectBooleanCheckbox id="ativo"
+					value="#{usuarioMB.usuario.ativo}" />
+				<p:message for="ativo"></p:message>
 
-			<h:outputLabel class="form-label" for="situacaoCivil"
-				value="Situacao Civil" />
-			<p:selectOneRadio id="situacaoCivil"
-				value="#{usuarioMB.usuario.situacaoCivil}">
-				<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
-				<f:selectItem itemLabel="Casado" itemValue="Casado" />
-				<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
-			</p:selectOneRadio>
-		</h:panelGrid>
+				<h:outputLabel class="form-label" for="sexo" value="Sexo" />
+				<p:selectOneMenu id="sexo" value="#{usuarioMB.usuario.sexo}">
+					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+				</p:selectOneMenu>
+				<p:message for="sexo"></p:message>
 
-		<p:commandButton value="Salvar" action="#{usuarioMB.salvar}"
-			update=":frm, :table" />
+				<h:outputLabel class="form-label" for="situacaoCivil"
+					value="Situacao Civil" />
+				<p:selectOneRadio id="situacaoCivil"
+					value="#{usuarioMB.usuario.situacaoCivil}">
+					<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
+					<f:selectItem itemLabel="Casado" itemValue="Casado" />
+					<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
+				</p:selectOneRadio>
+				<p:message for="situacaoCivil"></p:message>
+			</h:panelGrid>
+
+			<p:commandButton value="Salvar" action="#{usuarioMB.salvar}" update=":frm :table" icon="ui-icon-check" />
+		</p:panel>
+
+
 	</h:form>
-
 	<p:dataTable id="table" var="usuario" value="#{usuarioMB.findAll()}">
 		<p:column headerText="Id">
 			<h:outputText value="#{usuario.id}" />
@@ -114,5 +123,6 @@ label.form-label:after {
 		</p:column>
 
 	</p:dataTable>
+
 </h:body>
 </html>
