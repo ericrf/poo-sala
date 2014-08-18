@@ -43,36 +43,33 @@ label.form-label.required:before {
 			<p:messages />
 			<h:panelGrid columns="3" cellpadding="5">
 				<h:outputLabel class="form-label required" for="nome" value="Nome" />
-				<p:inputText id="nome" value="#{usuarioMB.usuario.nome}">
-					<p:clientValidator />
-				</p:inputText>
-
-				<p:message for="nome"></p:message>
+				<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+				<p:message for="nome" />
 
 				<h:outputLabel class="form-label" for="email" value="E-mail" />
 				<p:inputText id="email" type="email"
 					value="#{usuarioMB.usuario.email}" />
-				<p:message for="email"></p:message>
+				<p:message for="email" />
 
 				<h:outputLabel class="form-label" for="idade" value="Idade" />
 				<p:inputText id="idade" value="#{usuarioMB.usuario.idade}" />
-				<p:message for="idade"></p:message>
+				<p:message for="idade" />
 
 				<h:outputLabel class="form-label" for="cpf" value="CPF" />
 				<p:inputText id="cpf" value="#{usuarioMB.usuario.cpf}" />
-				<p:message for="cpf"></p:message>
+				<p:message for="cpf" />
 
 				<h:outputLabel class="form-label" for="ativo" value="Ativo" />
 				<p:selectBooleanCheckbox id="ativo"
 					value="#{usuarioMB.usuario.ativo}" />
-				<p:message for="ativo"></p:message>
+				<p:message for="ativo" />
 
 				<h:outputLabel class="form-label" for="sexo" value="Sexo" />
 				<p:selectOneMenu id="sexo" value="#{usuarioMB.usuario.sexo}">
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 				</p:selectOneMenu>
-				<p:message for="sexo"></p:message>
+				<p:message for="sexo" />
 
 				<h:outputLabel class="form-label" for="situacaoCivil"
 					value="Situacao Civil" />
@@ -82,11 +79,12 @@ label.form-label.required:before {
 					<f:selectItem itemLabel="Casado" itemValue="Casado" />
 					<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
 				</p:selectOneRadio>
-				<p:message for="situacaoCivil"></p:message>
+				<p:message for="situacaoCivil" />
 			</h:panelGrid>
 
 			<p:commandButton value="Salvar" action="#{usuarioMB.salvar}"
-				update=":frm :table" icon="ui-icon-check" validateClient="false"/>
+				process="@form" update="@form :table" icon="ui-icon-check"
+				validateClient="false" />
 		</p:panel>
 	</h:form>
 	<p:dataTable id="table" var="usuario" value="#{usuarioMB.findAll()}">
