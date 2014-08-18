@@ -11,7 +11,6 @@
 	<title><ui:insert name="titulo">FAE</ui:insert></title>
 	<link type="text/css" rel="stylesheet" href="styles/default.css" />
 	<style>
-
 #table {
 	width: 100%;
 }
@@ -44,7 +43,9 @@ label.form-label.required:before {
 			<p:messages />
 			<h:panelGrid columns="3" cellpadding="5">
 				<h:outputLabel class="form-label required" for="nome" value="Nome" />
-				<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
+				<p:inputText id="nome" value="#{usuarioMB.usuario.nome}">
+					<p:clientValidator />
+				</p:inputText>
 
 				<p:message for="nome"></p:message>
 
@@ -84,10 +85,9 @@ label.form-label.required:before {
 				<p:message for="situacaoCivil"></p:message>
 			</h:panelGrid>
 
-			<p:commandButton value="Salvar" action="#{usuarioMB.salvar}" update=":frm :table" icon="ui-icon-check" />
+			<p:commandButton value="Salvar" action="#{usuarioMB.salvar}"
+				update=":frm :table" icon="ui-icon-check" validateClient="false"/>
 		</p:panel>
-
-
 	</h:form>
 	<p:dataTable id="table" var="usuario" value="#{usuarioMB.findAll()}">
 		<p:column headerText="Id">
