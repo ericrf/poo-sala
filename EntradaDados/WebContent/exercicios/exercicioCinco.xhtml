@@ -9,7 +9,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title><ui:insert name="titulo">FAE</ui:insert></title>
-	<link type="text/css" rel="stylesheet" href="styles/default.css" />
+	<link type="text/css" rel="stylesheet" href="../styles/default.css" />
 	<style>
 #table {
 	width: 100%;
@@ -38,56 +38,6 @@ label.form-label.required:before {
 
 
 <h:body>
-	<h:form id="frm">
-		<f:validateBean>
-			<p:panel>
-				<p:messages />
-				<h:panelGrid columns="3" cellpadding="5">
-					<h:outputLabel class="form-label required" for="nome" value="Nome" />
-					<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
-					<p:message for="nome" />
-
-					<h:outputLabel class="form-label" for="email" value="E-mail" />
-					<p:inputText id="email" type="email"
-						value="#{usuarioMB.usuario.email}" />
-					<p:message for="email" />
-
-					<h:outputLabel class="form-label" for="idade" value="Idade" />
-					<p:inputText id="idade" value="#{usuarioMB.usuario.idade}" />
-					<p:message for="idade" />
-
-					<h:outputLabel class="form-label" for="cpf" value="CPF" />
-					<p:inputText id="cpf" value="#{usuarioMB.usuario.cpf}" />
-					<p:message for="cpf" />
-
-					<h:outputLabel class="form-label" for="ativo" value="Ativo" />
-					<p:selectBooleanCheckbox id="ativo"
-						value="#{usuarioMB.usuario.ativo}" />
-					<p:message for="ativo" />
-
-					<h:outputLabel class="form-label" for="sexo" value="Sexo" />
-					<p:selectOneMenu id="sexo" value="#{usuarioMB.usuario.sexo}">
-						<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-						<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-					</p:selectOneMenu>
-					<p:message for="sexo" />
-
-					<h:outputLabel class="form-label" for="situacaoCivil"
-						value="Situacao Civil" />
-					<p:selectOneRadio id="situacaoCivil"
-						value="#{usuarioMB.usuario.situacaoCivil}">
-						<f:selectItem itemLabel="Solteiro" itemValue="Solteiro" />
-						<f:selectItem itemLabel="Casado" itemValue="Casado" />
-						<f:selectItem itemLabel="Divorciado" itemValue="Divorciado" />
-					</p:selectOneRadio>
-					<p:message for="situacaoCivil" />
-				</h:panelGrid>
-
-				<p:commandButton value="Salvar" action="#{usuarioMB.salvar}"
-					icon="ui-icon-check" validateClient="false" />
-			</p:panel>
-		</f:validateBean>
-	</h:form>
 	<p:dataTable id="table" var="usuario" value="#{usuarioMB.findAll()}">
 		<p:column headerText="Id">
 			<h:outputText value="#{usuario.id}" />

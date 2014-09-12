@@ -39,9 +39,10 @@ label.form-label.required:before {
 
 <h:body>
 	<h:form>
+		<p:growl id="growl" sticky="true" showDetail="true" />
 		<p:wizard flowListener="#{usuarioMB.onFlowProcess}">
 			<p:tab title="Formulário">
-				<p:messages />
+
 				<h:panelGrid columns="3" cellpadding="5">
 					<h:outputLabel class="form-label" for="nome" value="Nome" />
 					<p:inputText id="nome" value="#{usuarioMB.usuario.nome}" />
@@ -88,6 +89,7 @@ label.form-label.required:before {
 				</center>
 			</p:tab>
 			<p:tab title="Confirmação">
+				<p:messages />
 				<h:panelGrid columns="2" cellpadding="5">
 					<h:outputLabel class="form-label" value="Nome" />
 					<h:outputLabel value="#{usuarioMB.usuario.nome}" />

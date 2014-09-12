@@ -2,15 +2,18 @@ package edu.fae.controllers;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FlowEvent;
 
 import edu.fae.dao.DaoFactory;
 import edu.fae.model.Usuario;
 
-@SessionScoped
+@ViewScoped
 @ManagedBean(name = "usuarioMB")
 public class UsuarioMB {
 
@@ -19,7 +22,11 @@ public class UsuarioMB {
 
 	public String salvar() {
 		DaoFactory.getUsuarioDao().save(usuario);
-		usuario = new Usuario();
+		
+		FacesMessage msg = new FacesMessage("Successful", "Usuário inserido com sucesso!");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+		
+        usuario = new Usuario();
 
 		return "";
 	}
