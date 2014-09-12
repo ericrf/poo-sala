@@ -35,8 +35,6 @@ label.form-label.required:before {
 }
 </style>
 </h:head>
-
-
 <h:body>
 	<p:dataTable id="table" var="usuario" value="${usuarioMB.usuarios}">
 		<p:column headerText="Id">
@@ -70,8 +68,6 @@ label.form-label.required:before {
 		<p:column headerText="Situacao Civil">
 			<h:outputText value="#{usuario.situacaoCivil}" />
 		</p:column>
-
 	</p:dataTable>
-
 </h:body>
 </html>
