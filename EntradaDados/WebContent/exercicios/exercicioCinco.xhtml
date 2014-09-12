@@ -38,7 +38,7 @@ label.form-label.required:before {
 
 
 <h:body>
-	<p:dataTable id="table" var="usuario" value="#{usuarioMB.findAll()}">
+	<p:dataTable id="table" var="usuario" value="${usuarioMB.usuarios}">
 		<p:column headerText="Id">
 			<h:outputText value="#{usuario.id}" />
 		</p:column>

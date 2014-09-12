@@ -2,6 +2,7 @@ package edu.fae.controllers;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,6 +21,12 @@ public class UsuarioMB {
 	private Usuario usuario = new Usuario();
 	private boolean skip;
 
+	private List<Usuario> usuarios;
+	
+	@PostConstruct
+	public void init(){
+		usuarios = findAll();
+	}
 	public String salvar() {
 		DaoFactory.getUsuarioDao().save(usuario);
 		
@@ -34,7 +41,7 @@ public class UsuarioMB {
 	public void resetar() {
 		usuario = new Usuario();
 	}
-
+	
 	public List<Usuario> findAll() {
 		return DaoFactory.getUsuarioDao().findAll();
 	}
@@ -62,6 +69,14 @@ public class UsuarioMB {
 
 	public void setSkip(boolean skip) {
 		this.skip = skip;
+	}
+
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 }
