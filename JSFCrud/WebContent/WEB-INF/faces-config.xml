@@ -16,7 +16,7 @@
 	<converter>
 	    <description>Model Converter</description>
 	    <converter-id>modelConverter</converter-id>
-	    <converter-for-class>edu.fae.model.Model</converter-for-class>
+	    <converter-for-class>edu.bj.model.Model</converter-for-class>
 	    <converter-class>
 	        edu.fae.util.ModelConverter
 	    </converter-class>
