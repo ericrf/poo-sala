@@ -48,6 +48,7 @@
         <mapping class="edu.fae.model.Endereco"/>
         <mapping class="edu.fae.model.Categoria"/>
         <mapping class="edu.fae.model.PalavraChave"/>
+        <mapping class="edu.fae.model.Imagem" />
 
 <!-- 
        <event type="pre-update">

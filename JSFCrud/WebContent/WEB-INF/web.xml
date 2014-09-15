@@ -1,54 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-    <display-name>JavaFlex</display-name>
+<web-app id="WebApp_9" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>JavaFlex</display-name>
 
 	<context-param>
-	    <param-name>javax.faces.PROJECT_STAGE</param-name>
-	    <param-value>Development</param-value>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
 	</context-param>
-	<context-param>  
-	    <param-name>primefaces.THEME</param-name>  
-	    <param-value>home</param-value>  
-	</context-param>  	
-	
-	<!-- 
 	<context-param>
-	    <param-name>javax.faces.STATE_SAVING_METHOD</param-name>
-	    <param-value>client</param-value>
-	</context-param>	
-	 -->
-	
+		<param-name>primefaces.THEME</param-name>
+		<param-value>home</param-value>
+	</context-param>
+
+	<!-- <context-param> <param-name>javax.faces.STATE_SAVING_METHOD</param-name> 
+		<param-value>client</param-value> </context-param> -->
+
+	<!-- Filtro Upload primefaces -->
+	<filter>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+		<init-param>
+			<param-name>thresholdSize</param-name>
+			<param-value>51200</param-value>
+		</init-param>
+		<init-param>
+			<param-name>uploadDirectory</param-name>
+			<param-value>C:\etc</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
 
 	<!-- Filtro Hibernate -->
-    <filter>
-        <filter-name>HibernateFilter</filter-name>
-        <filter-class>edu.fae.util.OpenSessionInViewFilter</filter-class>
-    </filter>
-    
-    <!-- Filtro que desabilita o cache -->
-    <filter>
-        <filter-name>NoCacheFilter</filter-name>
-        <filter-class>edu.fae.util.NoCacheFilter</filter-class>
-    </filter>    
+	<filter>
+		<filter-name>HibernateFilter</filter-name>
+		<filter-class>edu.fae.util.OpenSessionInViewFilter</filter-class>
+	</filter>
+
+	<!-- Filtro que desabilita o cache -->
+	<filter>
+		<filter-name>NoCacheFilter</filter-name>
+		<filter-class>edu.fae.util.NoCacheFilter</filter-class>
+	</filter>
 
 
 	<!-- Aplica o HibernateFilter em todas as requisições -->
-    <filter-mapping>
-        <filter-name>HibernateFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    
-    <filter-mapping>
-        <filter-name>HibernateFilter</filter-name>
-        <url-pattern>/faces/*</url-pattern>
-    </filter-mapping>    
+	<filter-mapping>
+		<filter-name>HibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter-mapping>
+		<filter-name>HibernateFilter</filter-name>
+		<url-pattern>/faces/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Aplica o Filtro NoCache em todas as requisições *.xhtml -->
-    <filter-mapping>
-        <filter-name>NoCacheFilter</filter-name>
-        <url-pattern>*.xhtml</url-pattern>
-    </filter-mapping>
-    
+	<filter-mapping>
+		<filter-name>NoCacheFilter</filter-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</filter-mapping>
+
 
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
@@ -61,9 +76,9 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-    	<welcome-file>index.jsf</welcome-file>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+		<welcome-file>index.jsf</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
 
 </web-app>
