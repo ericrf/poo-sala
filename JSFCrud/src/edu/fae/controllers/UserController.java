@@ -38,20 +38,18 @@ public class UserController implements Serializable {
 		String idParameter = null;
 		Long id = null; 
 		users = findAll();
+		address = new Address();
 		
 		idParameter = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 		if(idParameter != null) id = Long.valueOf(idParameter);
-		if(id==null) {
-			user = new User();
-		}else{
-			user = dao.findOneById(id);
-		}
 		
+		user = (id==null) ? new User() : dao.findOneById(id);
+		address = (user.getAddresses() != null && user.getAddresses().size() > 0) ? user.getAddresses().get(0) : new Address();
 		
-		Address a = new Address();
-		a.setStreet("rua blabla");
-		a.setPerson(user);
-		user.getAddresses().add(a);
+//		Address a = new Address();
+//		a.setStreet("rua blabla");
+//		a.setPerson(user);
+//		user.getAddresses().add(a);
 		
 		
 		
@@ -73,6 +71,8 @@ public class UserController implements Serializable {
 	}
 
 	public void save() {
+		address.setPerson(user);
+		user.getAddresses().add(address);
 		dao.save(user);
 		FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Sucesso!",  "id " + user.getId()));

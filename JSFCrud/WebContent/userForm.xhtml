@@ -39,6 +39,24 @@
 						size="60">
 						<p:message for="mobile" />
 					</p:inputText>
+					
+					<h:outputLabel for="street" value="Rua: *" />
+					<p:inputText id="street" value="#{userController.address.street}"
+						size="60">
+						<p:message for="street" />
+					</p:inputText>
+					
+					<h:outputLabel for="neiborhood" value="Bairro: *" />
+					<p:inputText id="neiborhood" value="#{userController.address.neiborhood}"
+						size="60">
+						<p:message for="neiborhood" />
+					</p:inputText>
+					
+					<h:outputLabel for="number" value="Numero: *" />
+					<p:inputText id="number" value="#{userController.address.number}"
+						size="60">
+						<p:message for="number" />
+					</p:inputText>
 				</h:panelGrid>
 
 
