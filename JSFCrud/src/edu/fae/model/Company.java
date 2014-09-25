@@ -4,13 +4,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -24,7 +24,7 @@ public class Company implements Model, Serializable {
 	@Column(name="idCompany")
 	private Long id;
 
-	@ManyToMany(mappedBy="companies", fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="companies", fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Person> partners = new ArrayList<Person>();
 	
 	private String name;

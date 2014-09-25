@@ -2,6 +2,7 @@ package edu.fae.controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -85,7 +86,9 @@ public class CompanyController implements Serializable {
 		return new DualListModelDiff<Person>(source, target);
 	}
 	public void setCompanyPartners(DualListModel<Person> partners) {
-		company.setPartners(partners.getTarget());
+		
+		List<Person> target = partners.getTarget();
+		company.setPartners(target);
 	}
 
 	public String onFlowProcess(FlowEvent event) {
