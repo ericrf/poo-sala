@@ -46,6 +46,8 @@
         <mapping class="edu.fae.model.Anuncio"/>
         <mapping class="edu.fae.model.Vendedor"/>
         <mapping class="edu.fae.model.Categoria"/>
+        <mapping class="edu.fae.model.Company"/>
+        <mapping class="edu.fae.model.Person"/>
 
         
       </session-factory>
