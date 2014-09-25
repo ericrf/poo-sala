@@ -1,0 +1,36 @@
+<ui:composition template="includes/estrutura.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="corpo">
+
+		<h1>Empresa</h1>
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+			<f:validateBean>
+				<p:messages />
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<h:outputLabel for="nome" value="Nome: " />
+					<p:inputText id="nome" value="#{companyController.company.name}"
+						size="60">
+						<p:message for="nome" />
+					</p:inputText>
+				</h:panelGrid>
+				<p:pickList id="categorias"
+					value="#{companyController.companyPartners}" var="p"
+					iconOnly="true" itemValue="${p}" itemLabel="${p.fullname}" converter="modelConverter">
+					<f:facet name="sourceCaption">Disponivel</f:facet>
+					<f:facet name="targetCaption">Selecionado</f:facet>
+				</p:pickList>
+
+				<p:commandButton action="#{companyController.save}" value="Salvar"
+					ajax="false" immediate="false"/>
+			</f:validateBean>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

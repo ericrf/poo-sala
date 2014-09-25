@@ -1,0 +1,49 @@
+<ui:composition template="includes/estrutura.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="corpo">
+
+		<h1>Usuários</h1>
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+			<f:validateBean>
+				<p:messages />
+				<h:panelGrid columns="2" style="margin-bottom:10px">
+					<h:outputLabel for="nome" value="Nome: *" />
+					<p:inputText id="nome" value="#{userController.user.fullname}"
+						size="60">
+						<p:message for="nome" />
+					</p:inputText>
+					<h:outputLabel for="email" value="Usuario: *" />
+					<p:inputText id="email" value="#{userController.user.email}"
+						size="60">
+						<p:message for="email" />
+					</p:inputText>
+					<h:outputLabel for="senha" value="Senha: *" />
+					<p:inputText id="senha" value="#{userController.user.password}"
+						size="60">
+						<p:message for="senha" />
+					</p:inputText>
+					<h:outputLabel for="telefone" value="telefone: *" />
+					<p:inputText id="telefone" value="#{userController.user.telephone}"
+						size="60">
+						<p:message for="telefone" />
+					</p:inputText>
+					<h:outputLabel for="mobile" value="Celular: *" />
+					<p:inputText id="mobile" value="#{userController.user.mobile}"
+						size="60">
+						<p:message for="mobile" />
+					</p:inputText>
+				</h:panelGrid>
+				<p:commandButton action="#{userController.save}" value="Salvar"
+					ajax="false" />
+			</f:validateBean>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

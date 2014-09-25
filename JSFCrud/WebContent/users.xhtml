@@ -1,0 +1,47 @@
+<ui:composition template="includes/estrutura.xhtml"
+	  xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="corpo">      
+
+		<h1>Pagina de Usuários!</h1>
+		
+		<h:form>
+			<p:button outcome="userForm.xhtml" value="Novo Usuário" /> 
+		</h:form>
+		
+		<h:form id="frmTabela">
+			<p:dataTable id="tabela" value="#{userController.users}" var="u">
+				
+			    	<p:column>
+					<f:facet name="header">Nome</f:facet>
+					#{u.fullname}  
+			    </p:column>
+				<p:column>
+					<f:facet name="header">Email</f:facet>
+					#{u.email}  
+			    </p:column>
+			    <p:column>
+					<f:facet name="header">Email</f:facet>
+					#{u.telephone}  
+			    </p:column>
+				<p:column style="width: 80px;">
+					<f:facet name="header">Ações</f:facet>
+					<p:button outcome="userForm.xhtml" icon="ui-icon-pencil" title="Editar Categoria">
+						<f:param name="id" value="#{u.id}" />
+					</p:button>
+					<p:spacer width="10" />
+					<p:commandButton onclick="return confirm('Tem certeza que deseja excluir?')" 
+						icon="ui-icon-trash" title="Excluir Usuário" ajax="true" update=":frmTabela" action="#{userController.remove()}">
+						<f:setPropertyActionListener target="#{userController.id}" value="#{u.id}"/>
+					</p:commandButton>
+			    </p:column>				    
+			</p:dataTable>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>
