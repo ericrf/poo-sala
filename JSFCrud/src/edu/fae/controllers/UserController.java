@@ -45,7 +45,7 @@ public class UserController implements Serializable {
 	
 	public void remove(){
 		user = dao.findOneById(id);
-		dao.delete(user);
+		dao.remove(user);
 		user = new User();
 		users = dao.findAll();
 	}

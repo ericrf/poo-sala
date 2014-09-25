@@ -54,7 +54,7 @@ public class CompanyController implements Serializable {
 	
 	public void remove(){
 		company = companyDao.findOneById(id);
-		companyDao.delete(company);
+		companyDao.remove(company);
 		company = new Company();
 		companies = companyDao.findAll();
 	}
