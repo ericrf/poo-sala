@@ -3,54 +3,59 @@
   "-//Hibernate/Hibernate Configuration DTD//EN"
   "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-     <session-factory>
+	<session-factory>
 
-        <!-- conexao mysql --> 
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/oo2n1</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-         
-         
-        <!-- conexao postgresql
-        <property name="connection.driver_class">org.postgresql.Driver</property>
-        <property name="connection.url">jdbc:postgresql:teste</property>
-        <property name="connection.username">postgres</property>
-        <property name="connection.password">12345</property>
-        <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        -->
-        
-        <!-- 
-        <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <property name="connection.url">jdbc:hsqldb:hsql://localhost/flex</property>
-        <property name="connection.username">SA</property>
-        <property name="connection.password"></property>
-        <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
-         -->        
+		<!-- conexao mysql -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://localhost:3306/oo2n1</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="packagesToScan">edu.fae.model</property>
 
-        <property name="hbm2ddl.auto">update</property>
-        <property name="show_sql">true</property>
-        
-     	<property name="connection.useUnicode">true</property> 
-        <property name="connection.characterEncoding">UTF-8</property>        
-        <property name="current_session_context_class">thread</property>
+
+		<!-- conexao postgresql <property name="connection.driver_class">org.postgresql.Driver</property> 
+			<property name="connection.url">jdbc:postgresql:teste</property> <property 
+			name="connection.username">postgres</property> <property name="connection.password">12345</property> 
+			<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property> -->
+
+		<!-- <property name="connection.driver_class">org.hsqldb.jdbcDriver</property> 
+			<property name="connection.url">jdbc:hsqldb:hsql://localhost/flex</property> 
+			<property name="connection.username">SA</property> <property name="connection.password"></property> 
+			<property name="dialect">org.hibernate.dialect.HSQLDialect</property> -->
+
+		<property name="hbm2ddl.auto">update</property>
+		<property name="show_sql">true</property>
+
+		<property name="connection.useUnicode">true</property>
+		<property name="connection.characterEncoding">UTF-8</property>
+		<property name="current_session_context_class">thread</property>
 		<property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
-		     
 
-	   <property name="javax.persistence.validation.group.pre-persist">javax.validation.groups.Default</property>
-       <property name="javax.persistence.validation.group.pre-update">javax.validation.groups.Default</property>
-       <property name="javax.persistence.validation.group.pre-remove"></property>		     
-		     
-    
-        <mapping class="edu.fae.model.Anuncio"/>
-        <mapping class="edu.fae.model.Vendedor"/>
-        <mapping class="edu.fae.model.Categoria"/>
-        <mapping class="edu.fae.model.Company"/>
-        <mapping class="edu.fae.model.Person"/>
 
-        
-      </session-factory>
+		<property name="javax.persistence.validation.group.pre-persist">javax.validation.groups.Default</property>
+		<property name="javax.persistence.validation.group.pre-update">javax.validation.groups.Default</property>
+		<property name="javax.persistence.validation.group.pre-remove"></property>
+
+
+		<mapping class="edu.fae.model.Address" />
+		<mapping class="edu.fae.model.Anuncio" />
+		<mapping class="edu.fae.model.Categoria" />
+		<mapping class="edu.fae.model.City" />
+		<mapping class="edu.fae.model.Company" />
+		<mapping class="edu.fae.model.Employer" />
+		<mapping class="edu.fae.model.OrderModel" />
+		<mapping class="edu.fae.model.PaymentForm"/>
+		<mapping class="edu.fae.model.ServiceModel"/>
+		<mapping class="edu.fae.model.State"/>
+		<mapping class="edu.fae.model.User"/>
+		<mapping class="edu.fae.model.Telephone"/>
+		<mapping class="edu.fae.model.Vendedor" />
+		<mapping class="edu.fae.model.Categoria" />
+		<mapping class="edu.fae.model.Person" />
+
+
+	</session-factory>
 </hibernate-configuration>
 
 
