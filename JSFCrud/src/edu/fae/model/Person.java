@@ -25,10 +25,6 @@ public class Person implements Model, Serializable{
 	@Column(name="idPerson")
 	private Long id;
 	
-	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-//	@JoinTable(name="company_partners", 
-//            joinColumns={@JoinColumn(name="idPerson")}, 
-//            inverseJoinColumns={@JoinColumn(name="idCompany")})
 	private Set<Company> companies = new HashSet<Company>();
 
 	private String fullname;

@@ -24,7 +24,7 @@ public class Company implements Model, Serializable {
 	@Column(name="idCompany")
 	private Long id;
 
-	@ManyToMany(mappedBy="companies", fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.PERSIST)
 	private List<Person> partners = new ArrayList<Person>();
 	
 	private String name;
