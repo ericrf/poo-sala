@@ -30,7 +30,7 @@ public class Company implements Model, Serializable {
 	private String name;
 
 	@OneToMany
-	@JoinColumn(name="idAddress")
+	@JoinColumn(name="idCompany")
 	private List<Address> address;
 
 	@Override

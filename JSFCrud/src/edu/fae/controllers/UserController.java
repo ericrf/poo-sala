@@ -14,6 +14,7 @@ import org.primefaces.event.FlowEvent;
 
 import edu.fae.dao.DaoFactory;
 import edu.fae.dao.UserDao;
+import edu.fae.model.Address;
 import edu.fae.model.User;
 
 @ManagedBean
@@ -26,6 +27,7 @@ public class UserController implements Serializable {
 	private Long id;
 	private User user = new User();
 	private List<User> users = new ArrayList<User>();
+	private Address address;
 
 	private boolean skip;
 	
@@ -44,6 +46,15 @@ public class UserController implements Serializable {
 		}else{
 			user = dao.findOneById(id);
 		}
+		
+		
+		Address a = new Address();
+		a.setStreet("rua blabla");
+		a.setPerson(user);
+		user.getAddresses().add(a);
+		
+		
+		
 	}
 	
 	public void remove(){
@@ -108,4 +119,16 @@ public class UserController implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public void addAddress() {
+		
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
 }

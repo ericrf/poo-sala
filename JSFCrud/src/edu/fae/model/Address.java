@@ -42,7 +42,9 @@ public class Address implements Serializable, Model{
 
 	public void setId(Long id) {
 		this.id = id;
-	} String getStreet() {
+	} 
+	
+	public String getStreet() {
 		return street;
 	}
 

@@ -1,6 +1,7 @@
 package edu.fae.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,10 +9,9 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -25,10 +25,10 @@ public class Person implements Model, Serializable{
 	@Column(name="idPerson")
 	private Long id;
 	
-	@ManyToMany
-	@JoinTable(name="company_partners", 
-            joinColumns={@JoinColumn(name="idPerson")}, 
-            inverseJoinColumns={@JoinColumn(name="idCompany")})
+	@ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+//	@JoinTable(name="company_partners", 
+//            joinColumns={@JoinColumn(name="idPerson")}, 
+//            inverseJoinColumns={@JoinColumn(name="idCompany")})
 	private Set<Company> companies = new HashSet<Company>();
 
 	private String fullname;
@@ -39,9 +39,8 @@ public class Person implements Model, Serializable{
 	private String telephone;
 	private String email;
 	
-	@OneToMany(cascade=CascadeType.PERSIST)
-	@JoinColumn(name="idAddress")
-	private List<Address> addresses;
+	@OneToMany(mappedBy="person", cascade=CascadeType.ALL) 
+	private List<Address> addresses = new ArrayList<Address>();
 
 	public Long getId() {
 		return id;
