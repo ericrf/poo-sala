@@ -14,6 +14,7 @@ import org.primefaces.event.FlowEvent;
 import org.primefaces.model.DualListModel;
 
 import edu.fae.dao.CompanyDao;
+import edu.fae.dao.DaoFactory;
 import edu.fae.dao.PersonDao;
 import edu.fae.model.Company;
 import edu.fae.model.Person;
@@ -36,6 +37,9 @@ public class CompanyController implements Serializable {
 	
 	@PostConstruct
 	private void init() {
+		companyDao = DaoFactory.getCompanyDao();
+		personDao = DaoFactory.getPersonDao();
+		
 		String idParameter = null;
 		Long id = null; 
 		companies = findAll();

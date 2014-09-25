@@ -2,7 +2,9 @@ package edu.fae.dao;
 
 import edu.fae.dao.hibernate.AnuncioDaoHibernate;
 import edu.fae.dao.hibernate.CategoriaDaoHibernate;
+import edu.fae.dao.hibernate.CompanyDaoHibernate;
 import edu.fae.dao.hibernate.PalavraChaveDaoHibernate;
+import edu.fae.dao.hibernate.PersonDaoHibernate;
 import edu.fae.dao.hibernate.ProdutoDaoHibernate;
 import edu.fae.dao.hibernate.UsuarioDaoHibernate;
 import edu.fae.dao.hibernate.VendedorDaoHibernate;
@@ -38,6 +40,14 @@ public class DaoFactory {
 
 	public static UsuarioDao getUsuarioDao() {
 		return new UsuarioDaoHibernate();
+	}
+
+	public static CompanyDao getCompanyDao() {
+		return new CompanyDaoHibernate();
+	}
+
+	public static PersonDao getPersonDao() {
+		return new PersonDaoHibernate();
 	}		
 
 	
