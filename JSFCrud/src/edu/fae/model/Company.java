@@ -31,7 +31,7 @@ public class Company implements Model, Serializable {
 
 	@OneToMany
 	@JoinColumn(name="idCompany")
-	private List<Address> address;
+	private List<Address> addresses;
 
 	@Override
 	public Long getId() {

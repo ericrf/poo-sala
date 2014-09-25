@@ -20,12 +20,6 @@ public class Person implements Model, Serializable{
 	@GeneratedValue
 	@Column(name="idPerson")
 	private Long id;
-	
-<<<<<<< HEAD
-	private Set<Company> companies = new HashSet<Company>();
-=======
-	private Company company;
->>>>>>> origin/master
 
 	private String fullname;
 	private String password;
@@ -92,15 +86,4 @@ public class Person implements Model, Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-	
-	
-
 }
