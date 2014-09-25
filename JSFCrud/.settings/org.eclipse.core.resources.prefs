@@ -2,5 +2,6 @@ eclipse.preferences.version=1
 encoding//src/edu/fae/dao/AnuncioDao.java=UTF-8
 encoding//src/edu/fae/dao/hibernate/AnuncioDaoHibernate.java=UTF-8
 encoding//src/edu/fae/dao/hibernate/CompanyDaoHibernate.java=UTF-8
+encoding//src/edu/fae/dao/hibernate/EmployerDaoHibernate.java=UTF-8
 encoding//src/edu/fae/dao/hibernate/PersonDaoHibernate.java=UTF-8
 encoding//src/edu/fae/dao/hibernate/UserDaoHibernate.java=UTF-8

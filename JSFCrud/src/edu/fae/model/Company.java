@@ -11,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -24,14 +23,14 @@ public class Company implements Model, Serializable {
 	@Column(name="idCompany")
 	private Long id;
 
-	@ManyToMany(mappedBy="companies", fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 	private List<Person> partners = new ArrayList<Person>();
 	
 	private String name;
 
 	@OneToMany
 	@JoinColumn(name="idCompany")
-	private List<Address> address;
+	private List<Address> addresses = new ArrayList<Address>();
 
 	@Override
 	public Long getId() {
@@ -58,12 +57,12 @@ public class Company implements Model, Serializable {
 		this.name = name;
 	}
 
-	public List<Address> getAddress() {
-		return address;
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(List<Address> address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 	
 }

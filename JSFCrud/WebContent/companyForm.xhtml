@@ -8,7 +8,7 @@
 
 	<ui:define name="corpo">
 
-		<h1>Empresa</h1>
+		<h1>Nova empresa</h1>
 		<h:form>
 			<p:growl id="growl" showDetail="true" sticky="true" />
 			<f:validateBean>
@@ -19,16 +19,47 @@
 						size="60">
 						<p:message for="nome" />
 					</p:inputText>
+
+
+
+					<h:outputLabel for="street" value="Rua: *" />
+					<p:inputText id="street" value="#{companyController.address.street}"
+						size="60" required="true" requiredMessage="Preencha o campo rua">
+						<p:message for="street" />
+					</p:inputText>
+
+					<h:outputLabel for="neiborhood" value="Bairro: *" />
+					<p:inputText id="neiborhood"
+						value="#{companyController.address.neiborhood}" size="60"
+						required="true" requiredMessage="Preencha o campo bairro">
+						<p:message for="neiborhood" />
+					</p:inputText>
+
+					<h:outputLabel for="number" value="Numero: *" />
+					<p:inputText id="number" value="#{companyController.address.number}"
+						size="60" required="true"
+						requiredMessage="Preencha o campo numero">
+						<p:message for="number" />
+					</p:inputText>
+
+
+					<h:outputLabel for="cities" value="Cidade: *" />
+					<p:selectOneMenu id="cities" value="#{companyController.address.city}">
+						<f:selectItems value="#{companyController.cities}" />
+					</p:selectOneMenu>
+
+
 				</h:panelGrid>
 				<p:pickList id="categorias"
 					value="#{companyController.companyPartners}" var="p"
-					iconOnly="true" itemValue="${p}" itemLabel="${p.fullname}" converter="modelConverter">
+					iconOnly="true" itemValue="${p}" itemLabel="${p.fullname}"
+					converter="modelConverter">
 					<f:facet name="sourceCaption">Disponivel</f:facet>
 					<f:facet name="targetCaption">Selecionado</f:facet>
 				</p:pickList>
 
 				<p:commandButton action="#{companyController.save}" value="Salvar"
-					ajax="false"/>
+					ajax="false" />
 			</f:validateBean>
 		</h:form>
 
