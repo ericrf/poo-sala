@@ -6,6 +6,7 @@ import edu.fae.dao.hibernate.CompanyDaoHibernate;
 import edu.fae.dao.hibernate.PalavraChaveDaoHibernate;
 import edu.fae.dao.hibernate.PersonDaoHibernate;
 import edu.fae.dao.hibernate.ProdutoDaoHibernate;
+import edu.fae.dao.hibernate.UserDaoHibernate;
 import edu.fae.dao.hibernate.UsuarioDaoHibernate;
 import edu.fae.dao.hibernate.VendedorDaoHibernate;
 
@@ -48,6 +49,10 @@ public class DaoFactory {
 
 	public static PersonDao getPersonDao() {
 		return new PersonDaoHibernate();
+	}
+
+	public static UserDao getUserDao() {
+		return new UserDaoHibernate();
 	}		
 
 	

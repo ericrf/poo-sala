@@ -12,6 +12,7 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.FlowEvent;
 
+import edu.fae.dao.DaoFactory;
 import edu.fae.dao.UserDao;
 import edu.fae.model.User;
 
@@ -30,6 +31,8 @@ public class UserController implements Serializable {
 	
 	@PostConstruct
 	private void init() {
+		dao = DaoFactory.getUserDao();
+		
 		String idParameter = null;
 		Long id = null; 
 		users = findAll();
