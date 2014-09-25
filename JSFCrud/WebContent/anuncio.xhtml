@@ -1,0 +1,41 @@
+<ui:composition template="includes/estrutura.xhtml"
+	  xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+	<ui:define name="corpo">      
+
+		<h1>Anuncios!</h1>
+		
+		
+		<h:form id="frmTabela">
+			<p:dataTable id="tabela" value="#{anuncioListaController.anuncios}" var="anuncio">
+				<p:column>
+					<f:facet name="header">Titulo</f:facet>
+					#{anuncio.titulo}  
+			    </p:column>
+			    
+				<p:column style="width: 150px;">
+					<f:facet name="header">Ações</f:facet>
+					<p:button outcome="anuncioVisualizar.xhtml" icon="ui-icon-show" title="Editar Anuncio">
+						<f:param name="id" value="#{anuncio.id}" />
+					</p:button>
+					<p:spacer width="10" />
+					
+					<p:button outcome="anuncioFormulario.xhtml" icon="ui-icon-pencil" title="Editar Anuncio">
+						<f:param name="id" value="#{anuncio.id}" />
+					</p:button>
+					<p:spacer width="10" />
+					<p:commandButton onclick="return confirm('Tem certeza que deseja excluir?')" 
+						icon="ui-icon-trash" title="Excluir Anuncio" ajax="true" update=":frmTabela" action="#{anuncioListaController.excluir}">
+						<f:setPropertyActionListener target="#{anuncioListaController.id}" value="#{anuncio.id}"/>
+					</p:commandButton>
+			    </p:column>				    
+			</p:dataTable>
+		</h:form>
+		
+	</ui:define>
+</ui:composition>

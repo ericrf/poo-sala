@@ -8,35 +8,44 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
+/**
+ * 
+ * @author robsonluz
+ *
+ */
 @Entity
 public class Categoria implements Model {
 	private Long id;
 	private String nome;
-	private List<Produto> produtos = new ArrayList<Produto>();
+	private List<Anuncio> anuncios = new ArrayList<Anuncio>();
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
-	public String getNome() {
-		return nome;
-	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	//@Pattern(regexp=".+@.+\\.[a-z]+")
+	public String getNome() {
+		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="categoria")
-	public List<Produto> getProdutos() {
-		return produtos;
+	@ManyToMany(fetch=FetchType.LAZY, mappedBy="categorias")
+	public List<Anuncio> getAnuncios() {
+		return anuncios;
 	}
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
+	public void setAnuncios(List<Anuncio> anuncios) {
+		this.anuncios = anuncios;
 	}
+	
+	
 	
 }

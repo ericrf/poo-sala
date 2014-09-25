@@ -11,6 +11,7 @@ import org.primefaces.model.DualListModel;
  *
  * @param <T>
  */
+@SuppressWarnings("serial")
 public class DualListModelDiff<T> extends DualListModel<T>{
 
 	public DualListModelDiff(List<T> source, List<T> target) {

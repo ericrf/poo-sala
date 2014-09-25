@@ -41,21 +41,14 @@ public class CategoriaFormController {
 		//Pegamos uma referencia para o FacesContext, para mandar mensagens para a tela
 		FacesContext ctx = FacesContext.getCurrentInstance();
 		
-		if(categoria.getNome()==null || categoria.getNome().length() ==0) {
-			//Mandando uma mensagem de erro para a tela
-			ctx.addMessage(null, 
-				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Informe corretamente o nome!", null)
-			);
-		}else{
 
-			//Chama o categoriaDao para salvar o objeto Categoria
-			categoriaDao.save(categoria);
-			
-			//Mandando uma mensagem para a tela
-			ctx.addMessage(null, 
-				new FacesMessage(FacesMessage.SEVERITY_INFO, "Categoria salvo com sucesso!", null)
-			);
-		}
+		//Chama o categoriaDao para salvar o objeto Categoria
+		categoriaDao.save(categoria);
+		
+		//Mandando uma mensagem para a tela
+		ctx.addMessage(null, 
+			new FacesMessage(FacesMessage.SEVERITY_INFO, "Categoria salvo com sucesso!", null)
+		);
 	}
 	
 

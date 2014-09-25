@@ -7,7 +7,7 @@
 
         <!-- conexao mysql --> 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/oo2intro</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/oo2n1</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
@@ -29,7 +29,7 @@
         <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
          -->        
 
-        <property name="hbm2ddl.auto">create</property>
+        <property name="hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
         
      	<property name="connection.useUnicode">true</property> 
@@ -43,24 +43,10 @@
        <property name="javax.persistence.validation.group.pre-remove"></property>		     
 		     
     
-        <mapping class="edu.fae.model.Usuario"/>
-        <mapping class="edu.fae.model.Produto"/>
-        <mapping class="edu.fae.model.Endereco"/>
+        <mapping class="edu.fae.model.Anuncio"/>
+        <mapping class="edu.fae.model.Vendedor"/>
         <mapping class="edu.fae.model.Categoria"/>
-        <mapping class="edu.fae.model.PalavraChave"/>
-        <mapping class="edu.fae.model.Imagem" />
 
-<!-- 
-       <event type="pre-update">
-         <listener class="org.hibernate.cfg.beanvalidation.BeanValidationEventListener"/>
-       </event>
-       <event type="pre-insert">
-         <listener class="org.hibernate.cfg.beanvalidation.BeanValidationEventListener"/>
-       </event>
-       <event type="pre-delete">
-         <listener class="org.hibernate.cfg.beanvalidation.BeanValidationEventListener"/>
-       </event>
- -->       	        
         
       </session-factory>
 </hibernate-configuration>

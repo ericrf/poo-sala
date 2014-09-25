@@ -1,3 +1,3 @@
 <%
-response.sendRedirect("produto.jsf");
+response.sendRedirect("categoria.jsf");
 %>
