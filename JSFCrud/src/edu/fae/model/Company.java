@@ -58,12 +58,12 @@ public class Company implements Model, Serializable {
 		this.name = name;
 	}
 
-	public List<Address> getAddress() {
-		return address;
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(List<Address> address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 	
 }

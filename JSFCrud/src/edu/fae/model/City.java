@@ -49,5 +49,9 @@ public class City implements Model, Serializable{
 	public void setState(State state) {
 		this.state = state;
 	}
+	
+	public String toString() {
+		return name;
+	}
 
 }

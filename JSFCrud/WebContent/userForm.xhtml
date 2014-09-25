@@ -8,7 +8,7 @@
 
 	<ui:define name="corpo">
 
-		<h1>Usuários</h1>
+		<h1>Novo usuário</h1>
 		<h:form>
 			<p:growl id="growl" showDetail="true" sticky="true" />
 			<f:validateBean>
@@ -16,32 +16,64 @@
 				<h:panelGrid columns="2" style="margin-bottom:10px">
 					<h:outputLabel for="nome" value="Nome: *" />
 					<p:inputText id="nome" value="#{userController.user.fullname}"
-						size="60">
+						size="60" required="true"
+						requiredMessage="Preencha o campo nome">
 						<p:message for="nome" />
 					</p:inputText>
-					<h:outputLabel for="email" value="Usuario: *" />
+					<h:outputLabel for="email" value="Email: *" />
 					<p:inputText id="email" value="#{userController.user.email}"
-						size="60">
+						size="60" required="true"
+						requiredMessage="Preencha o campo email">
 						<p:message for="email" />
 					</p:inputText>
 					<h:outputLabel for="senha" value="Senha: *" />
 					<p:inputText id="senha" value="#{userController.user.password}"
-						size="60">
+						size="60" required="true"
+						requiredMessage="Preencha o campo senha">
 						<p:message for="senha" />
 					</p:inputText>
 					<h:outputLabel for="telefone" value="telefone: *" />
 					<p:inputText id="telefone" value="#{userController.user.telephone}"
-						size="60">
+						size="60" required="true"
+						requiredMessage="Preencha o campo telefone">
 						<p:message for="telefone" />
 					</p:inputText>
 					<h:outputLabel for="mobile" value="Celular: *" />
 					<p:inputText id="mobile" value="#{userController.user.mobile}"
-						size="60">
+						size="60" required="true"
+						requiredMessage="Preencha o campo celular">
 						<p:message for="mobile" />
 					</p:inputText>
+
+					<h:outputLabel for="street" value="Rua: *" />
+					<p:inputText id="street" value="#{userController.address.street}"
+						size="60" required="true"
+						requiredMessage="Preencha o campo rua">
+						<p:message for="street" />
+					</p:inputText>
+
+					<h:outputLabel for="neiborhood" value="Bairro: *" />
+					<p:inputText id="neiborhood"
+						value="#{userController.address.neiborhood}" size="60"
+						required="true"
+						requiredMessage="Preencha o campo bairro">
+						<p:message for="neiborhood" />
+					</p:inputText>
+
+					<h:outputLabel for="number" value="Numero: *" />
+					<p:inputText id="number" value="#{userController.address.number}"
+						size="60" required="true"
+						requiredMessage="Preencha o campo numero">
+						<p:message for="number" />
+					</p:inputText>
+
+
+					<h:outputLabel for="cities" value="Cidade: *" />
+					<p:selectOneMenu id="cities" value="#{userController.address.city}" converter="modelConverter">
+					 <f:selectItems value="#{userController.cities}" var="c"  itemLabel="#{c.name}" itemValue="#{c}"/>
+					</p:selectOneMenu>
+
 				</h:panelGrid>
-
-
 
 
 				<p:commandButton action="#{userController.save}" value="Salvar"

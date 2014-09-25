@@ -13,22 +13,29 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.FlowEvent;
 
 import edu.fae.dao.DaoFactory;
-import edu.fae.dao.UserDao;
+import edu.fae.dao.EmployerDao;
 import edu.fae.dao.hibernate.CityDaoHibernate;
+import edu.fae.dao.hibernate.CompanyDaoHibernate;
 import edu.fae.model.Address;
 import edu.fae.model.City;
-import edu.fae.model.User;
+import edu.fae.model.Company;
+import edu.fae.model.Employer;
 
 @ManagedBean
 @ViewScoped
-public class UserController implements Serializable {
-	private static final long serialVersionUID = 4678939401185694748L;
+public class EmployerController implements Serializable {
 
-	private UserDao dao;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7450461097463680963L;
+
+	private EmployerDao dao;
 
 	private Long id;
-	private User user = new User();
-	private List<User> users = new ArrayList<User>();
+	private Employer user = new Employer();
+	private List<Employer> users = new ArrayList<Employer>();
+	private List<Company> companies = new ArrayList<Company>();
 	private List<City> cities = new ArrayList<City>();
 	private Address address;
 
@@ -36,7 +43,7 @@ public class UserController implements Serializable {
 
 	@PostConstruct
 	private void init() {
-		dao = DaoFactory.getUserDao();
+		dao = DaoFactory.getEmployerDao();
 
 		String idParameter = null;
 		Long id = null;
@@ -47,12 +54,14 @@ public class UserController implements Serializable {
 		if (idParameter != null)
 			id = Long.valueOf(idParameter);
 
-		user = (id == null) ? new User() : dao.findOneById(id);
+		user = (id == null) ? new Employer() : dao.findOneById(id);
 		address = (user.getAddresses() != null && user.getAddresses().size() > 0) ? user
 				.getAddresses().get(0) : new Address();
 
 		if (address.getCity() == null)
 			address.setCity(new City());
+		
+		companies = new CompanyDaoHibernate().findAll();
 
 		// Address a = new Address();
 		// a.setStreet("rua blabla");
@@ -64,15 +73,15 @@ public class UserController implements Serializable {
 	public void remove() {
 		user = dao.findOneById(id);
 		dao.remove(user);
-		user = new User();
+		user = new Employer();
 		users = dao.findAll();
 	}
 
 	public void newo() {
-		user = new User();
+		user = new Employer();
 	}
 
-	public List<User> findAll() {
+	public List<Employer> findAll() {
 		return dao.findAll();
 	}
 
@@ -83,7 +92,7 @@ public class UserController implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null,
 				new FacesMessage("Sucesso!", "id " + user.getId()));
-		user = new User();
+		user = new Employer();
 	}
 
 	public String onFlowProcess(FlowEvent event) {
@@ -95,11 +104,11 @@ public class UserController implements Serializable {
 		}
 	}
 
-	public User getUser() {
+	public Employer getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Employer user) {
 		this.user = user;
 	}
 
@@ -111,11 +120,11 @@ public class UserController implements Serializable {
 		this.skip = skip;
 	}
 
-	public List<User> getUsers() {
+	public List<Employer> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<Employer> users) {
 		this.users = users;
 	}
 
@@ -148,5 +157,15 @@ public class UserController implements Serializable {
 	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
+
+	public List<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
+	
+	
 
 }

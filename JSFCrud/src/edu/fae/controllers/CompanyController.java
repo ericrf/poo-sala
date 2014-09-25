@@ -2,7 +2,6 @@ package edu.fae.controllers;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -17,6 +16,9 @@ import org.primefaces.model.DualListModel;
 import edu.fae.dao.CompanyDao;
 import edu.fae.dao.DaoFactory;
 import edu.fae.dao.PersonDao;
+import edu.fae.dao.hibernate.CityDaoHibernate;
+import edu.fae.model.Address;
+import edu.fae.model.City;
 import edu.fae.model.Company;
 import edu.fae.model.Person;
 import edu.fae.util.DualListModelDiff;
@@ -33,6 +35,8 @@ public class CompanyController implements Serializable {
 	private Long id;
 	private Company company = new Company();
 	private List<Company> companies = new ArrayList<Company>();
+	private List<City> cities = new ArrayList<City>();
+	private Address address;
 	
 	private boolean skip;
 	
@@ -44,14 +48,18 @@ public class CompanyController implements Serializable {
 		String idParameter = null;
 		Long id = null; 
 		companies = findAll();
+		cities = new CityDaoHibernate().findAll();
 				
 		idParameter = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
 		if(idParameter != null) id = Long.valueOf(idParameter);
-		if(id==null) {
-			company = new Company();
-		}else{
-			company = companyDao.findOneById(id);
-		}
+		
+		company = (id==null) ? new Company() : companyDao.findOneById(id);
+		
+		address = (company.getAddresses() != null && company.getAddresses().size() > 0) ? company
+				.getAddresses().get(0) : new Address();
+
+		if (address.getCity() == null)
+			address.setCity(new City());
 		
 		
 	}
@@ -131,4 +139,28 @@ public class CompanyController implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public void addAddress(Address na) {
+		final Address a = na;
+		company.getAddresses().add(a);
+
+	}
+
+	public List<City> getCities() {
+		return cities;
+	}
+
+	public void setCities(List<City> cities) {
+		this.cities = cities;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+	
+	
 }

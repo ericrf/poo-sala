@@ -1,3 +1,3 @@
 <%
-response.sendRedirect("categoria.jsf");
+response.sendRedirect("users.jsf");
 %>

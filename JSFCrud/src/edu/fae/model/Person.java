@@ -2,17 +2,13 @@ package edu.fae.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -25,7 +21,11 @@ public class Person implements Model, Serializable{
 	@Column(name="idPerson")
 	private Long id;
 	
+<<<<<<< HEAD
 	private Set<Company> companies = new HashSet<Company>();
+=======
+	private Company company;
+>>>>>>> origin/master
 
 	private String fullname;
 	private String password;
@@ -77,14 +77,6 @@ public class Person implements Model, Serializable{
 		this.addresses = addresses;
 	}
 
-	public Set<Company> getCompanies() {
-		return companies;
-	}
-
-	public void setCompanies(Set<Company> companies) {
-		this.companies = companies;
-	}
-
 	public String getFullname() {
 		return fullname;
 	}
@@ -99,6 +91,14 @@ public class Person implements Model, Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 	
 	
